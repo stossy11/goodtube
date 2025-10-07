@@ -417,7 +417,8 @@
 
 		// Redirect from any short to the homepage
 		if (window.location.href.indexOf('/shorts') !== -1 && !goodTube_redirectHappened) {
-			window.location.href = 'https://youtube.com';
+		    const videoId = window.location.pathname.split('/shorts/')[1].split('?')[0];
+		    window.location.href = `https://www.youtube.com/watch?v=${videoId}`;
 			goodTube_redirectHappened = true;
 		}
 
