@@ -1743,7 +1743,7 @@
 						<div class='goodTube_donation'>
 							<div class="goodTube_text">
 								<strong>This adblocker is 100% free to use and always will be.<br>
-								It has helped over 120,000 people remove the unbearable ads from Youtube.</strong><br>
+								It has helped over 130,000 people remove the unbearable ads from Youtube.</strong><br>
 								<br>
 								<strong>Donations help to keep this project going and support the wider community who use it.</strong> If you would like to say thank you and can give something back, it would be greatly appreciated.<br>
 								<br>
@@ -1771,6 +1771,9 @@
 							<strong>I can't use the miniplayer</strong><br>
 							The Youtube miniplayer is not supported. Instead this uses "Picture in Picture" mode, which is the new standard for the web. Unfortunately Firefox does not support the Picture in Picture API, so the button is disabled in Firefox until they decide to include this feature.<br>
 							<br>
+							<strong>Is this compatible with other Youtube extensions?</strong><br>
+							Short answer - probably not. This heavily modifies how Youtube works in order to block ads. A key part of this is replacing the default Youtube player with their "embedded" player. This means that unless your extension also works for embedded Youtube videos (like where you view a Youtube video on another website), it generally won't be compatible. Unfortunately there's not much I can do to support these extensions as a result. Honeslty though - you probably never needed them anyway, just play the video and be happy.<br>
+							<br>
 							<strong>I'm having a different problem</strong><br>
 							If you're having a different issue, most of the time you will find it's caused by a conflicting extension you have installed. The first thing to do is turn off all other extensions you have installed. Leave only Tampermonkey and GoodTube enabled. Then refresh Youtube, check if the problem is fixed. If it is, then you know one of them is causing the issue. Turn your other extensions back on back on one at a time until you find the problem.
 						</div>
@@ -1781,7 +1784,11 @@
 					<div class='goodTube_content'>
 						<div class='goodTube_text goodTube_successText'>Your message has been sent successfully.</div>
 						<form class='goodTube_report' onSubmit='javascript:;'>
-							<div class='goodTube_text'>I am dedicated to helping every single person get this working. Everyone is important and if you have any problems at all, please let me know. I will respond and do my best to help!</div>
+							<div class='goodTube_text'>
+								I am dedicated to helping every single person get this working. Everyone is important and if you have any problems at all, please let me know. I will respond and do my best to help!<br>
+								<br>
+								<i>* Please read the FAQs above before reporting an issue.</i>
+							</div>
 							<input class='goodTube_reportEmail' type='email' placeholder='Email address' required>
 							<textarea class='goodTube_reportText' placeholder='Enter your message here...\r\rPlease note - most reported issues are caused by a conflicting extension. Please first try turning off all of your other extensions. Refresh Youtube, check if the problem is fixed. If it is, then you know something is conflicting. Turn your other extensions back on one at a time until you find the cause. Please try this first before reporting an issue!' required></textarea>
 							<input type='submit' class='goodTube_button' id='goodTube_button_submitReport' value='Submit'>

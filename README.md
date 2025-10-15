@@ -1,7 +1,7 @@
 # GoodTube - Free Youtube Adblocker
 **Hello and welcome to GoodTube, a free adblocker for Youtube.**
 
-*This solution works in all browsers, including Google Chrome.*
+This solution works in all browsers, including Google Chrome.
 
 It uses an alternative method to remove ads, which means it will continue to work even when other conventional adblockers such as uBlock Origin, AdGuard, Ghostery, Brave Browser, etc aren't working.
 
@@ -51,6 +51,9 @@ This is usually caused by another adblocker which Youtube is detecting. To fix t
 **I can't use the miniplayer**<br>
 The Youtube miniplayer is not supported. Instead this uses "Picture in Picture" mode, which is the new standard for the web. Unfortunately Firefox does not support the Picture in Picture API, so the button is disabled in Firefox until they decide to include this feature.
 
+**Is this compatible with other Youtube extensions?**<br>
+Short answer - probably not. This heavily modifies how Youtube works in order to block ads. A key part of this is replacing the default Youtube player with their "embedded" player. This means that unless your extension also works for embedded Youtube videos (like where you view a Youtube video on another website), it generally won't be compatible. Unfortunately there's not much I can do to support these extensions as a result. Honeslty though - you probably never needed them anyway, just play the video and be happy.
+
 **I'm having a different problem**<br>
 If you're having a different issue, most of the time you will find it's caused by a conflicting extension you have installed. The first thing to do is turn off all other extensions you have installed. Leave only Tampermonkey and GoodTube enabled. Then refresh Youtube, check if the problem is fixed. If it is, then you know one of them is causing the issue. Turn your other extensions back on back on one at a time until you find the problem.
 
@@ -79,7 +82,7 @@ This plugins helps to keep this important resource free and available to everyon
 
 ## Make a Donation
 **This adblocker is 100% free to use and always will be.<br>
-It has helped over 120,000 people remove the unbearable ads from Youtube.**<br>
+It has helped over 130,000 people remove the unbearable ads from Youtube.**<br>
 
 Donations help to keep this project going and support the wider community who use it. If you would like to say thank you and can give something back, it would be greatly appreciated.<br>
 
