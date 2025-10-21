@@ -241,6 +241,13 @@
 		goodTube_hideComments = 'false';
 	}
 
+	// Are AI summaries enabled?
+	let goodTube_hideAiSummaries = goodTube_helper_getCookie('goodTube_hideAiSummaries');
+	if (!goodTube_hideAiSummaries) {
+		goodTube_helper_setCookie('goodTube_hideAiSummaries', 'false');
+		goodTube_hideAiSummaries = 'false';
+	}
+
 	// Always play videos from the start?
 	let goodTube_alwaysStart = goodTube_helper_getCookie('goodTube_alwaysStart');
 	if (!goodTube_alwaysStart) {
@@ -386,7 +393,6 @@
 			console.log('[GoodTube] Suggested videos removed');
 		}
 
-
 		// Hide comments if they're not enabled
 		if (goodTube_hideComments === 'true') {
 			cssOutput += `
@@ -399,6 +405,18 @@
 
 			// Debug message
 			console.log('[GoodTube] Comments removed');
+		}
+
+		// Hide AI summaries if they're not enabled
+		if (goodTube_hideAiSummaries === 'true') {
+			cssOutput += `
+				ytd-expandable-metadata-renderer[has-video-summary] {
+					display: none !important;
+				}
+			`;
+
+			// Debug message
+			console.log('[GoodTube] AI summaries removed');
 		}
 
 		// Add the styles to the page
@@ -1678,6 +1696,11 @@
 			hideComments = ' checked';
 		}
 
+		let hideAiSummaries = '';
+		if (goodTube_hideAiSummaries === 'true') {
+			hideAiSummaries = ' checked';
+		}
+
 		let alwaysStart = '';
 		if (goodTube_alwaysStart === 'true') {
 			alwaysStart = ' checked';
@@ -1729,7 +1752,12 @@
 							<label for='goodTube_option_hideComments'>Hide comments</label>
 						</div> <!-- .goodTube_setting -->
 
-							<div class='goodTube_setting'>
+						<div class='goodTube_setting'>
+							<input type='checkbox' class='goodTube_option_hideAiSummaries' name='goodTube_option_hideAiSummaries' id='goodTube_option_hideAiSummaries'`+ hideAiSummaries + `>
+							<label for='goodTube_option_hideAiSummaries'>Hide AI summaries</label>
+						</div> <!-- .goodTube_setting -->
+
+						<div class='goodTube_setting'>
 							<input type='checkbox' class='goodTube_option_alwaysStart' name='goodTube_option_alwaysStart' id='goodTube_option_alwaysStart'`+ alwaysStart + `>
 							<label for='goodTube_option_alwaysStart'>Always play videos from the start</label>
 						</div> <!-- .goodTube_setting -->
@@ -1772,7 +1800,7 @@
 							The Youtube miniplayer is not supported. Instead this uses "Picture in Picture" mode, which is the new standard for the web. Unfortunately Firefox does not support the Picture in Picture API, so the button is disabled in Firefox until they decide to include this feature.<br>
 							<br>
 							<strong>Is this compatible with other Youtube extensions?</strong><br>
-							Short answer - probably not. This heavily modifies how Youtube works in order to block ads. A key part of this is replacing the default Youtube player with their "embedded" player. This means that unless your extension also works for embedded Youtube videos (like where you view a Youtube video on another website), it generally won't be compatible. Unfortunately there's not much I can do to support these extensions as a result. Honeslty though - you probably never needed them anyway, just play the video and be happy.<br>
+							Short answer - probably not. This heavily modifies how Youtube works in order to block ads. A key part of this is replacing the default Youtube player with their "embedded" player. This means that unless your extension also works for embedded Youtube videos (like where you view a Youtube video on another website), it generally won't be compatible. Unfortunately there's not much I can do to support these extensions as a result. Honestly though - you probably never needed them anyway, just play the video and be happy.<br>
 							<br>
 							<strong>I'm having a different problem</strong><br>
 							If you're having a different issue, most of the time you will find it's caused by a conflicting extension you have installed. The first thing to do is turn off all other extensions you have installed. Leave only Tampermonkey and GoodTube enabled. Then refresh Youtube, check if the problem is fixed. If it is, then you know one of them is causing the issue. Turn your other extensions back on back on one at a time until you find the problem.
@@ -2259,6 +2287,17 @@
 					}
 					else {
 						goodTube_helper_setCookie('goodTube_hideComments', 'false');
+					}
+				}
+
+				// Hide AI summaries
+				let goodTube_setting_hideAiSummaries = document.querySelector('.goodTube_option_hideAiSummaries');
+				if (goodTube_setting_hideAiSummaries) {
+					if (goodTube_setting_hideAiSummaries.checked) {
+						goodTube_helper_setCookie('goodTube_hideAiSummaries', 'true');
+					}
+					else {
+						goodTube_helper_setCookie('goodTube_hideAiSummaries', 'false');
 					}
 				}
 
